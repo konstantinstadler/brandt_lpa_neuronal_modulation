@@ -6,26 +6,24 @@ Neuronal model to investigate the neuromodulatory effects of LPA.
 ## Model description
 
 
-For modelling LPA effects on the level of the synapse we adapted the single-pool models developed by 
-
-[Sara 2005](https://www.sciencedirect.com/science/article/pii/S0896627305000693?via%3Dihub) 
+For modelling LPA effects on the level of the synapse we adapted the single-pool models developed by [Sara 2005](https://www.sciencedirect.com/science/article/pii/S0896627305000693?via%3Dihub) 
 
 The original model describes the dynamic within a synapses observed with dye-loaded vesicles and consists of four states. We excluded the parameter describing the dye loss dynamics, which resulted in a three-state model with:
 
-- u1: Fraction of vesicles currently in the resting state
-- u2: Fraction of vesicles currently activated/merged with the the pre-synaptic membrane
-- u3: Fraction of vesicles currently being recycled after endocytosis (empty vesicles not yet in the resting state)
+- u<sub>1</sub>: Fraction of vesicles currently in the resting state
+- u<sub>2</sub>: Fraction of vesicles currently activated/merged with the the pre-synaptic membrane
+- u<sub>3</sub>: Fraction of vesicles currently being recycled after endocytosis (empty vesicles not yet in the resting state)
 
 The dynamics of the model are described with three parameters:
 
 - α: rate of activation/exocytosis 
 - β: recycling rate (from the membrane back to resting pool)
 - σ: vesicle endocytosis after release
-These were set to the values obtained by Sara et al 2005: α=0.008 s-1, β=0.5 s-1, σ=1.67 s-1 and the dynamics are described with:
+These were set to the values obtained by Sara et al 2005: α=0.008 s<sup>-1</sup>, β=0.5 s<sup>-1</sup>, σ=1.67 s<sup>-1</sup>, and the dynamics are described with:
 
-du[1] = -α * u[1] + β * u[3]      
-du[2] = +α * u[1] - σ * u[2]      
-du[3] = +σ * u[2] - β * u[3]      
+du<sub>1</sub> = -α * u<sub>1</sub> + β * u<sub>3</sub>      
+du<sub>2</sub> = +α * u<sub>1</sub> - σ * u<sub>2</sub>      
+du<sub>3</sub> = +σ * u<sub>2</sub> - β * u<sub>3</sub>      
 
 
 We implemented this model in the scientific programming language [Julia](https://arxiv.org/abs/1209.5145). The full source code and script to generate the figures is available at FILL IN.
