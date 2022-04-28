@@ -26,7 +26,8 @@ du<sub>2</sub> = +α * u<sub>1</sub> - σ * u<sub>2</sub>
 du<sub>3</sub> = +σ * u<sub>2</sub> - β * u<sub>3</sub>      
 
 
-We implemented this model in the scientific programming language [Julia](https://arxiv.org/abs/1209.5145). The full source code and script to generate the figures is available at FILL IN.
+We implemented this model in the scientific programming language [Julia](https://arxiv.org/abs/1209.5145). 
+The full source code script to run the model and generate the data/figures is available at the [authors github repository](https://github.com/konstantinstadler/brandt_lpa_neuronal_modulation) .
 
 
 ## Results
