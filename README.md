@@ -39,7 +39,7 @@ To elucidate this mechanism, we developed a three state neuronal model (adpated 
 We modelled the expected increase in mEPSC frequency by increasing the exocytosis rate α by a factor of 1.5. 
 Subsequently, we matched the observed rate of mEPSC reduction by reducing the recycling rate β by a factor of 0.01.
 Nevertheless, these model parameters would still result in a transient increase of merged membrane vesicles (not shown/SI). 
-However, if the near collapse of the recycling rate happens shortly before the increase of the exocytosis it would mask the transient increase in vesicle release. Such a modelled dynamic matches the observed LPA effect in cultured neurons.
+However, if the near collapse of the recycling rate happens shortly before the increase of the exocytosis (here shown with a one minute delay) it would mask the transient increase in vesicle release. Such a modelled dynamic matches the observed LPA effect in cultured neurons.
 
 
 ## Running the model

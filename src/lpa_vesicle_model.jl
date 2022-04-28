@@ -31,7 +31,7 @@ t_first_lpa_effect = 200
 p_first_lpa_effect = (α=1/120, β=0.005, σ=1.67)
 
 # Second LPA effect 
-t_second_lpa_effect = 300
+t_second_lpa_effect = 260
 p_second_lpa_effect = (α=1.5/120, β=0.005, σ=1.67)
 
 
@@ -68,8 +68,8 @@ callbacks = CallbackSet(
 prob = ODEProblem(ODEFunction(vesicle_model!, syms=[:u1, :u2, :u3]) , u0, t_exp_duration, p)
 sol = solve(prob, Tsit5(), abstol = 1e-9, reltol = 1e-9, callback=callbacks)
 
-# df_result = DataFrame(sol)
-# CSV.write(joinpath(RESULT_DIR, TABLE_NAME), df_result, delim='\t')
+df_result = DataFrame(sol)
+CSV.write(joinpath(RESULT_DIR, TABLE_NAME), df_result, delim='\t')
 
 plot(sol, 
      vars = (0,2),
@@ -77,7 +77,7 @@ plot(sol,
      xlabel = "time [s]",
      ylabel = "Fraction of currently merged vesicles")
 savefig(joinpath(RESULT_DIR, FIG_NAME))
-gui()  # to show the plot uncomment
+# gui()  # to show the plot uncomment
 
 
 
