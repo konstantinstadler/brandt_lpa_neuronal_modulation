@@ -19,11 +19,12 @@ The dynamics of the model are described with three parameters:
 - α: rate of activation/exocytosis 
 - β: recycling rate (from the membrane back to resting pool)
 - σ: vesicle endocytosis after release
+
 These were set to the values obtained by Sara et al 2005: α=0.008 s<sup>-1</sup>, β=0.5 s<sup>-1</sup>, σ=1.67 s<sup>-1</sup>, and the dynamics are described with:
 
-du<sub>1</sub> = -α * u<sub>1</sub> + β * u<sub>3</sub>      
-du<sub>2</sub> = +α * u<sub>1</sub> - σ * u<sub>2</sub>      
-du<sub>3</sub> = +σ * u<sub>2</sub> - β * u<sub>3</sub>      
+- du<sub>1</sub> = -α * u<sub>1</sub> + β * u<sub>3</sub>      
+- du<sub>2</sub> = +α * u<sub>1</sub> - σ * u<sub>2</sub>      
+- du<sub>3</sub> = +σ * u<sub>2</sub> - β * u<sub>3</sub>      
 
 
 We implemented this model in the scientific programming language [Julia](https://arxiv.org/abs/1209.5145). 
@@ -49,8 +50,8 @@ The model was implemented in [Julia](https://julialang.org/) using the [Differen
 To run the model:
 
 - [Download and install Julia](https://julialang.org/downloads/)
-- Download this repository (pressing the button 'Code' - either via git or just the zip file.
-- run the script from the command line with `julia --project ./src/lpa_vesicle_model.jl`
+- Download this repository (pressing the button 'Code' - either clone via git or just download/extract the zip file).
+- run the script from the command line from the root directory with `julia --project ./src/lpa_vesicle_model.jl`
 - this will produce a png figure in the the current directory with the results
 - the first time it might take some minutes for installing/pre-compiling all packages, it is faster the second time
 
