@@ -68,7 +68,7 @@ If you want to run the script from within the julia interpreter:
 When run as is, the script re-produces the two results in the /results folder.
 
 - lpa_vesicle_model.csv : numerical outcome of the model run
-- lpa_vesicle_model.png : visualization of the fraction of merged particles over time
+- lpa_vesicle_model.png : visualization of the fraction of merged particles over time (corresponding to u(2) in the csv file)
 
 To also show the output as graph during the run, uncomment `#gui()` at the last line of the script.
 
