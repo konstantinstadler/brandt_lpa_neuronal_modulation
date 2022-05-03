@@ -10,14 +10,14 @@ For modelling LPA effects on the level of the synapse we adapted the single-pool
 
 The original model describes the dynamic within a synapses observed with dye-loaded vesicles and consists of four states. We excluded the parameter describing the dye loss dynamics, which resulted in a three-state model with:
 
-- u<sub>1</sub>: Fraction of vesicles currently in the resting state
+- u<sub>1</sub>: Fraction of vesicles ready for release
 - u<sub>2</sub>: Fraction of vesicles currently activated/merged with the the pre-synaptic membrane
-- u<sub>3</sub>: Fraction of vesicles currently being recycled after endocytosis (empty vesicles not yet in the resting state)
+- u<sub>3</sub>: Fraction of vesicles currently being recycled after endocytosis (empty vesicles not yet in the pool of vesicles that can be released)
 
 The dynamics of the model are described with three parameters:
 
 - α: rate of activation/exocytosis 
-- β: recycling rate (from the membrane back to resting pool)
+- β: recycling rate (after endocytosis back to the pool of vesicles ready for release)
 - σ: vesicle endocytosis after release
 
 These were set to the values obtained by Sara et al 2005: α=0.008 s<sup>-1</sup>, β=0.5 s<sup>-1</sup>, σ=1.67 s<sup>-1</sup>, and the dynamics are described with:
@@ -35,7 +35,7 @@ The full source code script to run the model and generate the data/figures is av
 
 Contrary to expectations the increase in pre-synaptic Ca<sub>i</sub> concentration did not led to an increase in the mEPSC frequency.
 We hypothesize that this could be explained by a secondary effect of LPA disturbing vesicle recycling in cultured neurons.
-To elucidate this mechanism, we developed a three state neuronal model (adpated from [Sara 2005](https://www.sciencedirect.com/science/article/pii/S0896627305000693?via%3Dihub)), which allows to vary the rate of exocytosis α (activation/release of vesicles in the resting pool), endocytosis σ and the recycling rate β (refilling of vesicles and transport to the resting pool).
+To elucidate this mechanism, we developed a three state neuronal model (adpated from [Sara 2005](https://www.sciencedirect.com/science/article/pii/S0896627305000693?via%3Dihub)), which allows to vary the rate of exocytosis α (activation/release of vesicles), endocytosis σ and the recycling rate β (refilling of vesicles and transport to the pool of vescicles ready for release).
 
 We modelled the expected increase in mEPSC frequency by increasing the exocytosis rate α by a factor of 1.5. 
 Subsequently, we matched the observed rate of mEPSC reduction by reducing the recycling rate β by a factor of 0.01.

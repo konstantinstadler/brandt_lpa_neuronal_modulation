@@ -37,7 +37,7 @@ p_second_lpa_effect = (α=1.5/120, β=0.005, σ=1.67)
 
 function vesicle_model!(du, u, p, t_exp_duration)
     α, β, σ = p.α, p.β, p.σ
-    du[1] = -α * u[1] + β * u[3]      # vesicles in the resting pool 
+    du[1] = -α * u[1] + β * u[3]      # vesicles ready for release
     du[2] = +α * u[1] - σ * u[2]      # vesicles currently merged with the membrane
     du[3] = +σ * u[2] - β * u[3]      # currently being recycled vesicles
 end
