@@ -52,7 +52,7 @@ To run the model:
 - [Download and install Julia](https://julialang.org/downloads/)
 - Download this repository (pressing the button 'Code' - either clone via git or just download/extract the zip file).
 - run the script from the command line from the root directory with `julia --project ./src/lpa_vesicle_model.jl`
-- this will produce a png figure in the the current directory with the results
+- this will produce results in the /results folder
 - the first time it might take some minutes for installing/pre-compiling all packages, it is faster the second time
 
 
