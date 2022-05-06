@@ -15,8 +15,12 @@ Plots.theme(:juno)
 
 const RESULT_DIR = normpath(joinpath(@__FILE__,"..","..", "results"))
 mkpath(RESULT_DIR)
-FIG_NAME = "lpa_vesicle_model.png"
-TABLE_NAME = "lpa_vesicle_model.csv"
+# FIG_NAME = "lpa_vesicle_model.png"
+# TABLE_NAME = "lpa_vesicle_model.csv"
+
+FIG_NAME = "lpa_vesicle_model_wo_endo.png"
+TABLE_NAME = "lpa_vesicle_model_wo_endo.csv"
+
 
 # Parameters
 # -----------
@@ -26,13 +30,22 @@ p = (α=1/120, β=0.5, σ=1.67)
 t_exp_duration = (0.0,1200.0)  # in sec
 u0 = [1.0,0.0, 0.0]            # particle state at the start
 
+# # First LPA effect
+# t_first_lpa_effect = 200
+# p_first_lpa_effect = (α=1/120, β=0.005, σ=1.67)
+#
+# # Second LPA effect 
+# t_second_lpa_effect = 260
+# p_second_lpa_effect = (α=1.5/120, β=0.005, σ=1.67)
+
 # First LPA effect
 t_first_lpa_effect = 200
-p_first_lpa_effect = (α=1/120, β=0.005, σ=1.67)
+p_first_lpa_effect = (α=1/120, β=0.5, σ=1.67)
 
-# Second LPA effect 
+# Second LPA effect
 t_second_lpa_effect = 260
-p_second_lpa_effect = (α=1.5/120, β=0.005, σ=1.67)
+p_second_lpa_effect = (α=1.5/120, β=0.5, σ=1.67)
+
 
 
 function vesicle_model!(du, u, p, t_exp_duration)
