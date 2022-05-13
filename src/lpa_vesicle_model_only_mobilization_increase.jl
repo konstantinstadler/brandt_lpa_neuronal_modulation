@@ -1,9 +1,8 @@
-# LPA xesicle model with increase of activation and endocytosis reduction
-# This mirrors the conditions in cultured neurons.
+# LPA Vesicle model without endocytosis reduction
+# This mirrors the conditions in vivo slices.
 # 
 # To run in the julia interpreter (after activating the environment - see readme):
-# include("./src/lpa_vesicle_model.jl")
-
+# include("./src/lpa_vesicle_model_only_mobilization_increase.jl")
 
 using DifferentialEquations
 using DataFrames
@@ -22,9 +21,8 @@ mkpath(RESULT_DIR)
 # FIG_NAME = "lpa_vesicle_model.png"
 # TABLE_NAME = "lpa_vesicle_model.csv"
 
-FIG_NAME = "lpa_vesicle_model.png"
-TABLE_NAME = "lpa_vesicle_model.csv"
-
+FIG_NAME = "lpa_vesicle_model_only_mobilization_increase.png"
+TABLE_NAME = "lpa_vesicle_model_only_mobilization_increase.csv"
 
 # Parameters
 # -----------
@@ -34,13 +32,8 @@ p = (α=1/120, β=0.5, σ=1.67)
 t_exp_duration = (0.0,1200.0)  # in sec
 u0 = [1.0,0.0, 0.0]            # particle state at the start
 
-# First LPA effect
-t_first_lpa_effect = 200
-p_first_lpa_effect = (α=1/120, β=0.005, σ=1.67)
-
-# Second LPA effect
-t_second_lpa_effect = 260
-p_second_lpa_effect = (α=1.5/120, β=0.005, σ=1.67)
+t_lpa_effect = 200
+p_lpa_effect = (α=1.5/120, β=0.5, σ=1.67)
 
 
 function vesicle_model!(du, u, p, t_exp_duration)
@@ -52,25 +45,16 @@ end
 
 
 function first_lpa_time_affect(y, t, integrator)
-    return t < t_first_lpa_effect
+    return t < t_lpa_effect
 end
 
 function first_para_affect!(integrator)
-    integrator.p = p_first_lpa_effect
+    integrator.p = p_lpa_effect
 end
 
-
-function second_lpa_time_affect(y, t, integrator)
-    return t < t_second_lpa_effect
-end
-
-function second_para_affect!(integrator)
-    integrator.p = p_second_lpa_effect
-end
 
 callbacks = CallbackSet(
-    ContinuousCallback(first_lpa_time_affect, first_para_affect!),
-    ContinuousCallback(second_lpa_time_affect, second_para_affect!))
+    ContinuousCallback(first_lpa_time_affect, first_para_affect!))
 
 
 prob = ODEProblem(ODEFunction(vesicle_model!, syms=[:u1, :u2, :u3]) , u0, t_exp_duration, p)

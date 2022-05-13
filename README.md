@@ -6,12 +6,12 @@ Neuronal model to investigate the neuromodulatory effects of LPA.
 ## Model description
 
 
-For modelling LPA effects on the level of the synapse we adapted the single-pool models developed by [Sara 2005](https://www.sciencedirect.com/science/article/pii/S0896627305000693?via%3Dihub) 
+For modelling LPA effects on the level of the synapse we adapted the single-pool, four-state model developed by [Sara 2005](https://www.sciencedirect.com/science/article/pii/S0896627305000693?via%3Dihub) which describes the dynamic within a synapses observed with dye-loaded vesicles. 
 
-The original model describes the dynamic within a synapses observed with dye-loaded vesicles and consists of four states. We excluded the parameter describing the dye loss dynamics, which resulted in a three-state model with:
+We excluded the parameter describing the dye loss dynamics, which resulted in a new single-pool three-state model with:
 
 - u<sub>1</sub>: Fraction of vesicles ready for release
-- u<sub>2</sub>: Fraction of vesicles currently activated/merged with the the pre-synaptic membrane
+- u<sub>2</sub>: Fraction of vesicles currently activated/merged with the pre-synaptic membrane
 - u<sub>3</sub>: Fraction of vesicles currently being recycled after endocytosis (empty vesicles not yet in the pool of vesicles that can be released)
 
 The dynamics of the model are described with three parameters:
@@ -35,12 +35,12 @@ The full source code script to run the model and generate the data/figures is av
 
 Contrary to expectations the increase in pre-synaptic Ca<sub>i</sub> concentration did not led to an increase in the mEPSC frequency.
 We hypothesize that this could be explained by a secondary effect of LPA disturbing vesicle recycling in cultured neurons.
-To elucidate this mechanism, we developed a three state neuronal model (adpated from [Sara 2005](https://www.sciencedirect.com/science/article/pii/S0896627305000693?via%3Dihub)), which allows to vary the rate of exocytosis α (activation/release of vesicles), endocytosis σ and the recycling rate β (refilling of vesicles and transport to the pool of vescicles ready for release).
+To explain this mechanism, we adopted a single-pool pre-synaptic model ([Sara 2005](https://www.sciencedirect.com/science/article/pii/S0896627305000693?via%3Dihub)), which allows to vary the rate of exocytosis α (activation/release of vesicles), endocytosis σ and the recycling rate β (refilling of vesicles and transport to the pool of vescicles ready for release).
 
 We modelled the expected increase in mEPSC frequency by increasing the exocytosis rate α by a factor of 1.5. 
 Subsequently, we matched the observed rate of mEPSC reduction by reducing the recycling rate β by a factor of 0.01.
-Nevertheless, these model parameters would still result in a transient increase of merged membrane vesicles (not shown/SI). 
-However, if the near collapse of the recycling rate happens shortly before the increase of the exocytosis (here shown with a one minute delay) it would mask the transient increase in vesicle release. Such a modelled dynamic matches the observed LPA effect in cultured neurons.
+Nevertheless, these model parameters would still result in a transient increase of merged membrane vesicles (not shown). 
+However, if the near collapse of the recycling rate happens before the increase of the exocytosis (here shown with a one minute delay) it would mask the transient increase in vesicle release. Such a modelled dynamic matches the observed LPA effect in cultured neurons.
 
 
 ## Running the model
@@ -49,27 +49,22 @@ The model was implemented in [Julia](https://julialang.org/) using the [Differen
 
 To run the model:
 
-- [Download and install Julia](https://julialang.org/downloads/)
-- Download this repository (pressing the button 'Code' - either clone via git or just download/extract the zip file).
-- run the script from the command line from the root directory with `julia --project ./src/lpa_vesicle_model.jl`
-- this will produce results in the /results folder
-- the first time it might take some minutes for installing/pre-compiling all packages, it is faster the second time
-
-
-If you want to run the script from within the julia interpreter:
-- go to the downloaded and extracted directory and start julia (command line)
-- activate the environment with 
+- [download and install Julia](https://julialang.org/downloads/)
+- download this repository (pressing the button 'Code' - either clone via git or just download/extract the zip file).
+- go to the downloaded and extracted directory and start julia (command line: `julia`)
+- in Julia activate the environment with 
     - press `]` (to get into the Julia package manager)
     - type `activate .`
     - type `instantiate`
+    - the first time it might take some minutes for installing/pre-compiling all packages, it is faster the second time
     - press backspace to go back to the standard Julia prompt
-    - `include("./src/lpa_vesicle_model.jl")`
-
-When run as is, the script re-produces the two results in the /results folder.
-
-- lpa_vesicle_model.csv : numerical outcome of the model run
-- lpa_vesicle_model.png : visualization of the fraction of merged particles over time (corresponding to u(2) in the csv file)
+    - run the script with `include("./src/lpa_vesicle_model.jl")`
+- this will produce results in the /results folder
+    - lpa_vesicle_model.csv : numerical outcome of the model run
+    - lpa_vesicle_model.png : visualization of the fraction of merged particles over time (corresponding to u(2) in the csv file)
 
 To also show the output as graph during the run, uncomment `#gui()` at the last line of the script.
 
+The model was developed and tested with Julia version 1.7.2 in Linux 5.17.5 (Pop!_OS 22.04) on a   
+Dell 5820 16 core Intel(R) Xeon(R) W-2245 CPU @ 3.90GHz (128GB RAM). Usual runtime is below 5 sec. 
 
