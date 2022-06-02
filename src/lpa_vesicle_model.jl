@@ -36,11 +36,11 @@ u0 = [1.0,0.0, 0.0]            # particle state at the start
 
 # First LPA effect
 t_first_lpa_effect = 200
-p_first_lpa_effect = (α=1/120, β=0.010, σ=1.67)
+p_first_lpa_effect = (α=1/120, β=0.0085, σ=1.67)
 
 # Second LPA effect
 t_second_lpa_effect = 260
-p_second_lpa_effect = (α=1.5/120, β=0.010, σ=1.67)
+p_second_lpa_effect = (α=1.5/120, β=0.0085, σ=1.67)
 
 
 function vesicle_model!(du, u, p, t_exp_duration)

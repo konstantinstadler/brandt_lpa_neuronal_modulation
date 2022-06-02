@@ -38,7 +38,7 @@ We hypothesize that this could be explained by a secondary effect of LPA disturb
 To explain this mechanism, we adopted a single-pool pre-synaptic model ([Sara 2005](https://www.sciencedirect.com/science/article/pii/S0896627305000693?via%3Dihub)), which allows to vary the rate of exocytosis α (activation/release of vesicles), endocytosis σ and the recycling rate β (refilling of vesicles and transport to the pool of vescicles ready for release).
 
 We modelled the expected increase in mEPSC frequency by increasing the exocytosis rate α by a factor of 1.5. 
-Subsequently, we matched the observed rate of mEPSC reduction by reducing the recycling rate β by a factor of 0.01.
+Subsequently, we matched the observed rate of mEPSC reduction by reducing the recycling rate β to 0.085 (factor of 0.017).
 Nevertheless, these model parameters would still result in a transient increase of merged membrane vesicles (not shown). 
 However, if the near collapse of the recycling rate happens before the increase of the exocytosis (here shown with a one minute delay) it would mask the transient increase in vesicle release. Such a modelled dynamic matches the observed LPA effect in cultured neurons.
 
